@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 reedline = "0.4.0"
 nom = "7.1.1"
+phf = { version = "0.10.1", features = ["macros"] }

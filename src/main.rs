@@ -11,13 +11,11 @@ fn main() {
         let sig = line_editor.read_line(&prompt).unwrap();
         match sig {
             Signal::Success(buf) => {
-                let tokens = parser::parse_line(buf);
-                if tokens[0] == "cd" {
-                    commands::cd(&tokens[1]);
-                } else if tokens[0] == "ls" {
-                    commands::pwd();
-                } else if tokens[0] == "exit" {
-                    break;
+                let tokens = parser::parse_line(&buf);
+                if let Some(builtin) = commands::get_builtin(tokens[0]) {
+                    builtin(&tokens);
+                } else {
+                    println!("Unknown identifier: {}", tokens[0]);
                 }
             }
             Signal::CtrlD | Signal::CtrlC => {
