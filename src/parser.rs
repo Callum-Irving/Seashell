@@ -1,3 +1,3 @@
-pub fn parse_line<'a>(line: &'a str) -> Vec<&'a str> {
-    return line.split_whitespace().collect();
+pub fn parse_line(line: String) -> Vec<String> {
+    return line.split_whitespace().map(|s| s.to_owned()).collect();
 }
