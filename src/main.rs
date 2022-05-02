@@ -17,8 +17,6 @@ fn main() {
     let prompt = DefaultPrompt::default();
     let mut ctx = Context::default();
 
-    ctx.aliases.insert("ls".to_owned(), "exa".to_owned());
-
     loop {
         let sig = line_editor.read_line(&prompt).unwrap();
         match sig {
